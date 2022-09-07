@@ -42,6 +42,7 @@ def get_component(component):
     response = requests.get('https://status.digitalocean.com/api/v2/components.json')
     json_data = json.loads(response.text)
     component = component[8:]
+    #Print statments used for debugging. Either remove or comment out later.
     print('+'*10)
     print(f'Currently component is set to this on line 43: {component}')
     print('+'*10)
