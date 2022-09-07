@@ -44,18 +44,17 @@ def get_component(component):
     component = component[8:]
     print('+'*10)
     print(f'Currently component is set to this on line 43: {component}')
-    component = json_data['components']['name'][component]
+    print('+'*10)
+    print(type(json_data))
 
-    if not component in json_data:
-        icon = ':x:'
-        comp_status = f'{icon} This component was not found. Please try a different component name.'
-    else:
-        status_c = json_data['components']['status']
-        comp_status = f'{status_c}'
-
-    return comp_status
-
-    #return list(filter(lambda x:x['name']==component,json_data))
+    for c in json_data['components']:
+        if c['name'].lower() == component.lower():
+            status = 'We Found it!'
+            return status
+            break
+        else:
+            status = f'{component} was not found. Please try a different component name...'
+            return status
 
 class ThisClient(discord.Client):
     async def on_ready(self):

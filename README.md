@@ -13,14 +13,22 @@
 ## Digital Ocean System Status Bot for Discord
 
 ### Install in Discord
-1. ![Add Bot To Discord](https://discord.com/api/oauth2/authorize?client_id=1015266420034125844&permissions=3072&scope=bot)
+[Add Bot To Discord](https://discord.com/api/oauth2/authorize?client_id=1015266420034125844&permissions=3072&scope=bot)
 
 ### Install/Run Locally
 
 1. `$ pip install -r requirements.txt`
-2. Place Discord Application Developer Token into `token.py` 
+2. Place Discord Application Developer Token into `discordtoken.py` 
 3. Run `python3 bot.py`
+4. If succesfull you will see the following output:
 
+```bash
+2022-09-07 11:20:40 INFO     discord.client logging in using static token
+2022-09-07 11:20:41 INFO     discord.gateway Shard ID None has connected to Gateway (Session ID: ).
+Logged on as DigitalOcean Reef!
+```
+
+---
 
 ### Usage
 
@@ -29,7 +37,23 @@ Command: `$reef`
 
 ```
 DigitalOcean Reef BOT — Today at 9:52 AM
-:white_check_mark: All Systems Operational 
+✅ All Systems Operational 
 Updated at 2022-09-07T08:13:41.180Z, Etc/UTC
 ```
 This will report if there are any outages in the Digital Ocean environment.  This is more of a general check. 
+
+### Getting Scheduled Maintenance
+
+Command: `$reef-m`
+
+```
+DigitalOcean Reef BOT — 09/02/2022
+✅ No Maintenance is Scheduled. All good!
+```
+
+### Getting Individual Component Status
+
+Command: `$reef-c componentName` e.g. `$reef-c API`
+
+```
+```
