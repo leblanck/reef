@@ -40,6 +40,13 @@ DigitalOcean Reef BOT — Today at 9:52 AM
 ✅ All Systems Operational 
 Updated at 2022-09-07T08:13:41.180Z, Etc/UTC
 ```
+or
+
+```
+DigitalOcean Reef BOT — Today at 4142 PM
+❕ Minor Service Outage Run $reef-i for more info on current incidents.
+Updated at: 2022-09-07T19:55:44.640Z, Etc/UTC
+```
 This will report if there are any outages in the Digital Ocean environment.  This is more of a general check. 
 
 #### Getting Scheduled Maintenance
@@ -51,6 +58,16 @@ DigitalOcean Reef BOT — 09/02/2022
 ```
 This will report if there are any *scheduled & upcoming* maintenance windows.
 
+#### Getting Active Incident Status
+Command: `$reef-i`
+
+```
+DigitalOcean Reef BOT — Today at 4:25 PM
+Current Outage: Mongo Managed Databases Creation with status of: INVESTIGATING...
+Updated at: 2022-09-07T19:50:31.324Z
+```
+This will report if there are any *active* incidents, the incident title, and when it was last updated.
+
 #### Getting Individual Component Status
 Command: `$reef-c componentName` e.g. `$reef-c API`
 
@@ -59,4 +76,5 @@ DigitalOcean Reef BOT — Today at 2:02 PM
 ✅  API is in a operational state
 Updated at 2022-07-14T23:18:26.904Z
 ```
+
 This will report the current status of the supplied component (API, VPC, Billing, etc). Components can be found on the [Digital Ocean Status Page](https://status.digitalocean.com).

@@ -10,6 +10,7 @@ def get_status():
     timeZ = json_data['page']['time_zone']
     timeU = json_data['page']['updated_at']
     indicator = json_data['status']['indicator']
+    helper = 'Run `$reef-i` for more info on current incidents.'
 
     if indicator == 'minor':
         icon = ':grey_exclamation:'
@@ -19,8 +20,9 @@ def get_status():
         icon = ':sos:'
     else:
         icon = ':white_check_mark:'
+        helper = ''
 
-    status = f'{icon} {desc} \n> Updated at {timeU}, {timeZ}'
+    status = f'{icon} {desc} {helper}\n> *Updated at: {timeU}, {timeZ}*'
     return status
 
 def get_maintenance():
@@ -37,6 +39,21 @@ def get_maintenance():
         maintenance = f'{icon} Loading Scheduled Maintenance... \n {schedule}'
 
     return maintenance
+
+def get_incident():
+    response = requests.get('https://status.digitalocean.com/api/v2/incidents/unresolved.json')
+    json_data = json.loads(response.text)
+    status = 'No Incidents were found! Nice!'
+
+    for i in json_data['incidents']:
+        if i['name'] != '':
+            inc_name = i['name']
+            inc_state = i['status']
+            inc_time = i['updated_at']
+            inc_desc = i['incident_updates']
+            status = f'**Current Outage:** {inc_name} with status of: {inc_state.upper()}...\n> *Updated at: {inc_time}* '
+
+    return status
 
 def get_component(component):
     response = requests.get('https://status.digitalocean.com/api/v2/components.json')
@@ -62,7 +79,7 @@ def get_component(component):
             else:
                 icon_c = ':white_check_mark:'
 
-            status = f'{icon_c} {component.upper()} is in a {indicator_c} state\n> Updated at {updated_c}'
+            status = f'{icon_c} {component.upper()} is in a **{indicator_c}** state\n> *Updated at: {updated_c}*'
 
             break
         else:
@@ -79,6 +96,8 @@ class ThisClient(discord.Client):
 
         if message.content.startswith('$reef-m'):
             await message.channel.send(get_maintenance())
+        elif message.content.startswith('$reef-i'):
+            await message.channel.send(get_incident())
         elif message.content.startswith('$reef-c'):
             data = message.content
             await message.channel.send(get_component(data))
