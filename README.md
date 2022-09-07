@@ -50,10 +50,15 @@ Command: `$reef-m`
 DigitalOcean Reef BOT — 09/02/2022
 ✅ No Maintenance is Scheduled. All good!
 ```
+This will report if there are any *scheduled & upcoming* maintenance windows.
 
 ### Getting Individual Component Status
 
 Command: `$reef-c componentName` e.g. `$reef-c API`
 
 ```
+DigitalOcean Reef BOT — Today at 2:02 PM
+✅  API is in a operational state
+Updated at 2022-07-14T23:18:26.904Z
 ```
+This will report the current status of the supplied component (API, VPC, Billing, etc). Components can be found on the [Digital Ocean Status Page](https://status.digitalocean.com).

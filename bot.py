@@ -49,13 +49,26 @@ def get_component(component):
     print(type(json_data))
 
     for c in json_data['components']:
-        if c['name'].lower() == component.lower():
-            status = 'We Found it!'
-            return status
+        print(c)
+        if c['name'].upper() == component.upper():
+            updated_c = c['updated_at']
+            indicator_c = c['status']
+            if indicator_c == 'degraded_performance':
+                icon_c = ':grey_exclamation:'
+            elif indicator_c == 'partial_outage':
+                icon_c = ':warning:'
+            elif indicator_c == 'major_outage':
+                icon_c = ':sos:'
+            else:
+                icon_c = ':white_check_mark:'
+
+            status = f'{icon_c} {component.upper()} is in a {indicator_c} state\n> Updated at {updated_c}'
+
             break
         else:
             status = f'{component} was not found. Please try a different component name...'
-            return status
+        
+    return status
 
 class ThisClient(discord.Client):
     async def on_ready(self):
@@ -72,9 +85,8 @@ class ThisClient(discord.Client):
         elif message.content.startswith('$reef'):
             await message.channel.send(get_status())
 
-
 intents = discord.Intents.default()
 intents.message_content = True
 
 client = ThisClient(intents=intents)
-client.run(discord_token) #DISCORD APP DEV TOKEN CALLED FROM token.py
+client.run(discord_token) #DISCORD APP DEV TOKEN CALLED FROM discordtoken.py
