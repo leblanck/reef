@@ -2,8 +2,8 @@
 
 <div align="center">
 
-<a href="">![GitHub issues](https://img.shields.io/github/issues-raw/leblanck/reef.svg)]</a>
-<a href="">![made-with-python](https://img.shields.io/badge/Made%20With-Python-yellow.svg)]</a>
+<a href="">![GitHub issues](https://img.shields.io/github/issues-raw/leblanck/reef.svg)</a>
+<a href="">![made-with-python](https://img.shields.io/badge/Made%20With-Python-yellow.svg)</a>
 
 </div>
 
