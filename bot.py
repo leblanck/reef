@@ -1,7 +1,7 @@
 import discord
 import requests
 import json
-import token
+from discordtoken import discord_token
 
 def get_status():
     response = requests.get('https://status.digitalocean.com/api/v2/status.json')
@@ -77,4 +77,4 @@ intents = discord.Intents.default()
 intents.message_content = True
 
 client = ThisClient(intents=intents)
-client.run(token.discord_token) #DISCORD APP DEV TOKEN CALLED FROM token.py
+client.run(discord_token) #DISCORD APP DEV TOKEN CALLED FROM token.py
