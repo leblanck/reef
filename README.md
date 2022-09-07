@@ -42,8 +42,7 @@ Updated at 2022-09-07T08:13:41.180Z, Etc/UTC
 ```
 This will report if there are any outages in the Digital Ocean environment.  This is more of a general check. 
 
-### Getting Scheduled Maintenance
-
+#### Getting Scheduled Maintenance
 Command: `$reef-m`
 
 ```
@@ -52,8 +51,7 @@ DigitalOcean Reef BOT — 09/02/2022
 ```
 This will report if there are any *scheduled & upcoming* maintenance windows.
 
-### Getting Individual Component Status
-
+#### Getting Individual Component Status
 Command: `$reef-c componentName` e.g. `$reef-c API`
 
 ```
