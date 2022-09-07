@@ -10,10 +10,10 @@
 
 # REEF
 
-## Digital Ocean status bot for Discord
+## Digital Ocean System Status Bot for Discord
 
 ### Install in Discord
-
+1. ![Add Bot To Discord](https://discord.com/api/oauth2/authorize?client_id=1015266420034125844&permissions=3072&scope=bot)
 
 ### Install/Run Locally
 
@@ -21,3 +21,15 @@
 2. Place Discord Application Developer Token into `token.py` 
 3. Run `python3 bot.py`
 
+
+### Usage
+
+#### Getting General System Status
+Command: `$reef`
+
+```
+DigitalOcean Reef BOT — Today at 9:52 AM
+:white_check_mark: All Systems Operational 
+Updated at 2022-09-07T08:13:41.180Z, Etc/UTC
+```
+This will report if there are any outages in the Digital Ocean environment.  This is more of a general check. 
