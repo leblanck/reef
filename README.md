@@ -23,8 +23,8 @@
 4. If succesfull you will see the following output:
 
 ```bash
-2022-09-07 11:20:40 INFO     discord.client logging in using static token
-2022-09-07 11:20:41 INFO     discord.gateway Shard ID None has connected to Gateway (Session ID: ).
+INFO     discord.client logging in using static token
+INFO     discord.gateway Shard ID None has connected to Gateway (Session ID: ).
 Logged on as DigitalOcean Reef!
 ```
 
