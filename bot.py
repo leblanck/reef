@@ -10,7 +10,7 @@ def get_status():
     timeZ = json_data['page']['time_zone']
     timeU = json_data['page']['updated_at']
     indicator = json_data['status']['indicator']
-    helper = 'Run `$reef-i` for more info on current incidents.'
+    helper = ' - Run `$reef-i` for more info on current incidents.'
 
     if indicator == 'minor':
         icon = ':grey_exclamation:'
