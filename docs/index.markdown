@@ -2,122 +2,83 @@
 layout: default
 ---
 
-Text can be **bold**, _italic_, or ~~strikethrough~~.
-
 [Link to another page](./another-page.html).
 
-There should be whitespace between paragraphs.
+<div align="center">
 
-There should be whitespace between paragraphs. We recommend including a README, or a file with information about your project.
+<a href="">![GitHub issues](https://img.shields.io/github/issues-raw/leblanck/reef.svg)</a>
+<a href="">![made-with-python](https://img.shields.io/badge/Made%20With-Python-yellow.svg)</a>
+<a href="">![req-python-ver](https://img.shields.io/badge/python-v3.10-blue.svg)</a>
 
-# Header 1
+</div>
 
-This is a normal paragraph following a header. GitHub is a code hosting platform for version control and collaboration. It lets you and others work together on projects from anywhere.
+# REEF
 
-## Header 2
+## Digital Ocean System Status Bot for Discord
 
-> This is a blockquote following a header.
->
-> When something is important enough, you do it even if the odds are not in your favor.
+### Install in Discord
+[Add Bot To Discord](https://discord.com/api/oauth2/authorize?client_id=1015266420034125844&permissions=3072&scope=bot)
 
-### Header 3
+### Install/Run Locally
 
-```js
-// Javascript code with syntax highlighting.
-var fun = function lang(l) {
-  dateformat.i18n = require('./lang/' + l)
-  return true;
-}
+1. `$ pip install -r requirements.txt`
+2. Place Discord Application Developer Token into `discordtoken.py` 
+3. Run `python3 bot.py`
+4. If succesfull you will see the following output:
+
+```bash
+INFO     discord.client logging in using static token
+INFO     discord.gateway Shard ID None has connected to Gateway (Session ID: ).
+Logged on as DigitalOcean Reef!
 ```
 
-```ruby
-# Ruby code with syntax highlighting
-GitHubPages::Dependencies.gems.each do |gem, version|
-  s.add_dependency(gem, "= #{version}")
-end
-```
+---
 
-#### Header 4
+### Usage
 
-*   This is an unordered list following a header.
-*   This is an unordered list following a header.
-*   This is an unordered list following a header.
-
-##### Header 5
-
-1.  This is an ordered list following a header.
-2.  This is an ordered list following a header.
-3.  This is an ordered list following a header.
-
-###### Header 6
-
-| head1        | head two          | three |
-|:-------------|:------------------|:------|
-| ok           | good swedish fish | nice  |
-| out of stock | good and plenty   | nice  |
-| ok           | good `oreos`      | hmm   |
-| ok           | good `zoute` drop | yumm  |
-
-### There's a horizontal rule below this.
-
-* * *
-
-### Here is an unordered list:
-
-*   Item foo
-*   Item bar
-*   Item baz
-*   Item zip
-
-### And an ordered list:
-
-1.  Item one
-1.  Item two
-1.  Item three
-1.  Item four
-
-### And a nested list:
-
-- level 1 item
-  - level 2 item
-  - level 2 item
-    - level 3 item
-    - level 3 item
-- level 1 item
-  - level 2 item
-  - level 2 item
-  - level 2 item
-- level 1 item
-  - level 2 item
-  - level 2 item
-- level 1 item
-
-### Small image
-
-![Octocat](https://github.githubassets.com/images/icons/emoji/octocat.png)
-
-### Large image
-
-![Branching](https://guides.github.com/activities/hello-world/branching.png)
-
-
-### Definition lists can be used with HTML syntax.
-
-<dl>
-<dt>Name</dt>
-<dd>Godzilla</dd>
-<dt>Born</dt>
-<dd>1952</dd>
-<dt>Birthplace</dt>
-<dd>Japan</dd>
-<dt>Color</dt>
-<dd>Green</dd>
-</dl>
+#### Getting General System Status
+Command: `$reef`
 
 ```
-Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.
+DigitalOcean Reef BOT — Today at 9:52 AM
+✅ All Systems Operational 
+Updated at 2022-09-07T08:13:41.180Z, Etc/UTC
 ```
+or
 
 ```
-The final element.
+DigitalOcean Reef BOT — Today at 4142 PM
+❕ Minor Service Outage Run $reef-i for more info on current incidents.
+Updated at: 2022-09-07T19:55:44.640Z, Etc/UTC
 ```
+This will report if there are any outages in the Digital Ocean environment.  This is more of a general check. 
+
+#### Getting Scheduled Maintenance
+Command: `$reef-m`
+
+```
+DigitalOcean Reef BOT — 09/02/2022
+✅ No Maintenance is Scheduled. All good!
+```
+This will report if there are any *scheduled & upcoming* maintenance windows.
+
+#### Getting Active Incident Status
+Command: `$reef-i`
+
+```
+DigitalOcean Reef BOT — Today at 4:25 PM
+Current Outage: Mongo Managed Databases Creation with status of: INVESTIGATING...
+Updated at: 2022-09-07T19:50:31.324Z
+```
+This will report if there are any *active* incidents, the incident title, and when it was last updated.
+
+#### Getting Individual Component Status
+Command: `$reef-c componentName` e.g. `$reef-c API`
+
+```
+DigitalOcean Reef BOT — Today at 2:02 PM
+✅  API is in a operational state
+Updated at 2022-07-14T23:18:26.904Z
+```
+
+This will report the current status of the supplied component (API, VPC, Billing, etc). Components can be found on the [Digital Ocean Status Page](https://status.digitalocean.com).
