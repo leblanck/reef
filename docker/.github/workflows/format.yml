@@ -1,0 +1,47 @@
+name: Format
+
+on:
+  push:
+    branches-ignore:
+      - 'master'
+    paths:
+      - '**.py'
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Configure git user
+      run: |
+        git config user.name pr-police
+        git config user.email pr.police@noreply.github.com
+    - uses: actions/setup-python@v3
+      with:
+        python-version: '3.10.4'
+
+    - name: Install dependencies
+      run: pip install black isort
+
+    - name: Run isort
+      continue-on-error: true
+      id: isort
+      run: isort -c --profile black aptools
+
+    - name: Sort imports
+      if: steps.isort.outcome == 'failure'
+      run: |
+        isort --ac --profile black reef
+        git commit -am 'style: sort imports'
+        git push
+    - name: Run black
+      continue-on-error: true
+      id: black
+      run: black --check reef
+
+    - name: Blacken code
+      if: steps.black.outcome == 'failure'
+      run: |
+        black reef
+        git commit -
