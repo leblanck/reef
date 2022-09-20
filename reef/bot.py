@@ -1,7 +1,7 @@
 import discord
 import requests
 import json
-from discordtoken import discord_token
+from reef.discordtoken import discord_token
 
 def get_status():
     response = requests.get('https://status.digitalocean.com/api/v2/status.json')
@@ -104,8 +104,10 @@ class ThisClient(discord.Client):
         elif message.content.startswith('$reef'):
             await message.channel.send(get_status())
 
-intents = discord.Intents.default()
-intents.message_content = True
 
-client = ThisClient(intents=intents)
-client.run(discord_token) #DISCORD APP DEV TOKEN CALLED FROM discordtoken.py
+if __name__ == "__main__":
+    intents = discord.Intents.default()
+    intents.message_content = True
+
+    client = ThisClient(intents=intents)
+    client.run(discord_token) #DISCORD APP DEV TOKEN CALLED FROM discordtoken.py
